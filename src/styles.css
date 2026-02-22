@@ -80,11 +80,36 @@ header h1{
 }
 
 .theme-controls{
+  position:fixed;
+  top:12px;
+  right:12px;
   display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  min-width:140px; /* reserve horizontal space */
-  gap:0.25rem;
+  gap:0.35rem;
+  align-items:center;
+  justify-content:flex-end;
+  z-index:9999;
+}
+
+.theme-btn{
+  background:transparent;
+  border:none;
+  font-size:1.05rem;
+  padding:0.45rem;
+  border-radius:999px;
+  cursor:pointer;
+  transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+
+.theme-btn:focus{
+  outline:2px solid color-mix(in srgb, var(--accent) 30%, transparent 70%);
+  outline-offset:3px;
+}
+
+.theme-btn:hover{ transform:translateY(-1px); }
+
+.theme-btn.active{
+  background: color-mix(in srgb, var(--accent) 12%, transparent 88%);
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--accent) 18%, transparent 82%);
 }
 
 .muted{ color:var(--muted); }
