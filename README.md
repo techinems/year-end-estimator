@@ -32,6 +32,10 @@ docker run --rm -p 8080:80 year-end-estimator:latest
 
 Then open http://localhost:8080 in your browser.
 
+License
+-------
+This project is released under the MIT License — see `LICENSE` for details.
+
 How it works:
 1. Enter the current counted number.
 2. Optionally set the "As of" date/time. If left blank, the current time is used.
