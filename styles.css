@@ -1,0 +1,126 @@
+/* Modern styles with system light/dark mode */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #556;
+  --text: #0b1220;
+  --accent: #6750a4;
+  --accent-contrast: white;
+  --shadow: 0 6px 18px rgba(11,18,32,0.06);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --card: #0f1724;
+    --muted: #9aa4b2;
+    --text: #e6eef8;
+    --accent: #8b5cf6;
+    --accent-contrast: black;
+    --shadow: 0 8px 22px rgba(2,6,23,0.6);
+  }
+}
+
+/* Attribute overrides when user explicitly picks a theme */
+:root[data-theme="light"]{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #556;
+  --text: #0b1220;
+  --accent: #6750a4;
+  --accent-contrast: white;
+  --shadow: 0 6px 18px rgba(11,18,32,0.06);
+}
+
+:root[data-theme="dark"]{
+  --bg: #0b1220;
+  --card: #0f1724;
+  --muted: #9aa4b2;
+  --text: #e6eef8;
+  --accent: #8b5cf6;
+  --accent-contrast: black;
+  --shadow: 0 8px 22px rgba(2,6,23,0.6);
+}
+
+html,body{
+  height:100%;
+  background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 92%, black 8%));
+  color:var(--text);
+}
+
+.container{
+  margin:4vh auto;
+  padding:1rem;
+}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:1.25rem 1.5rem;
+  box-shadow:var(--shadow);
+  border:1px solid color-mix(in srgb, var(--card) 92%, black 8%);
+}
+
+header h1{
+  margin:0 0 .25rem 0;
+  font-weight:600;
+}
+
+.header-with-controls{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding-right:0.5rem; /* give some room on the right */
+}
+
+.theme-controls select{
+  padding:0.35rem 0.5rem;
+  border-radius:8px;
+}
+
+.theme-controls{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  min-width:140px; /* reserve horizontal space */
+  gap:0.25rem;
+}
+
+.muted{ color:var(--muted); }
+
+.results{
+  margin-top:1rem;
+  padding-top:0.5rem;
+  border-top:1px dashed color-mix(in srgb, var(--muted) 30%, transparent 70%);
+}
+
+.estimate-value{
+  font-weight:800;
+  font-size:1.35rem;
+}
+
+/* Tweak buttons */
+button.contrast{
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 80%, black 20%));
+  color:var(--accent-contrast);
+  border:none;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 20%, transparent 80%);
+}
+
+input[type="number"], input[type="datetime-local"]{
+  background:transparent;
+  border-radius:8px;
+  padding:0.5rem;
+}
+
+@media (max-width:520px){
+  .container{ padding:0.5rem; }
+  .card{ padding:1rem; }
+  .header-with-controls{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.5rem;
+  }
+  .theme-controls{ align-items:flex-start; width:100%; }
+}

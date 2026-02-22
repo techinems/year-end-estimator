@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Year-End Estimator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <div class="card">
+      <header class="header-with-controls">
+        <div>
+          <h1>Year-End Estimator</h1>
+          <p class="muted">Enter a current counted number to estimate the year-end total based on elapsed hours in the year.</p>
+        </div>
+
+        <div class="theme-controls">
+          <label for="theme-select" class="muted">Theme</label>
+          <select id="theme-select" aria-label="Theme preference">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </header>
+
+      <form id="estimator-form" onsubmit="return false;">
+        <div class="grid">
+          <label for="counted">Current counted number</label>
+          <input id="counted" name="counted" type="number" min="0" step="any" required />
+        </div>
+
+        <div class="grid">
+          <label for="as-of">As of date/time (optional)</label>
+          <input id="as-of" name="as-of" type="datetime-local" />
+        </div>
+
+        <div class="grid">
+          <button id="estimate" class="contrast" type="button">Estimate Year-end</button>
+          <button id="clear" type="button">Clear</button>
+        </div>
+      </form>
+
+      <section id="results" aria-live="polite" class="results" hidden>
+        <h2>Results</h2>
+        <dl>
+          <dt>Elapsed hours in year</dt>
+          <dd id="elapsed-hours">-</dd>
+
+          <dt>Rate (per hour)</dt>
+          <dd id="rate">-</dd>
+
+          <dt>Estimated year-end total</dt>
+          <dd id="estimate-value" class="estimate-value">-</dd>
+        </dl>
+      </section>
+
+      <footer>
+        <p class="muted">Calculation: (<code>counted</code> &divide; <code>elapsed hours</code>) &times; <code>total hours in year</code></p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
