@@ -14,6 +14,23 @@ Theme selector:
 
 CDN note:
 - PicoCSS is loaded from jsDelivr (`https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css`).
+Docker
+------
+You can run this static site in a lightweight Apache httpd container.
+
+Build the image (PowerShell):
+
+```powershell
+docker build -t year-end-estimator:latest .
+```
+
+Run the container mapping port 8080 on the host to port 80 in the container:
+
+```powershell
+docker run --rm -p 8080:80 year-end-estimator:latest
+```
+
+Then open http://localhost:8080 in your browser.
 
 How it works:
 1. Enter the current counted number.
